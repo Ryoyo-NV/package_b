@@ -1,0 +1,53 @@
+# Modified in package_b:
+# - Changed update_rate from 10 Hz to 60 Hz.
+# - Renamed arm and gripper joints.
+
+/**:
+  controller_manager:
+    ros__parameters:
+      update_rate: 60 # Hz
+
+      arm_controller:
+        type: joint_trajectory_controller/JointTrajectoryController
+
+      # gripper_controller:
+      #   type: forward_command_controller/ForwardCommandController
+
+      gripper_controller:
+        type: joint_trajectory_controller/JointTrajectoryController
+
+      joint_state_broadcaster:
+        type: joint_state_broadcaster/JointStateBroadcaster
+
+  arm_controller:
+    ros__parameters:
+      joints:
+        - "Rotation"
+        - "Pitch"
+        - "Elbow"
+        - "Wrist_Pitch"
+        - "Wrist_Roll"
+
+      command_interfaces:
+        - position
+
+      state_interfaces:
+        - position
+
+      open_loop_control: true
+      allow_integration_in_goal_trajectories: true
+
+  gripper_controller:
+    ros__parameters:
+      joints:
+        - "Jaw"
+      interface_name: position
+
+      command_interfaces:
+        - position
+
+      state_interfaces:
+        - position
+
+      open_loop_control: true
+      allow_integration_in_goal_trajectories: true

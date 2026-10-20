@@ -1,0 +1,32 @@
+# Modified in package_b:
+# - Updated controller names to use the follower namespace.
+# - Renamed arm and gripper joints from numeric names to descriptive names.
+
+# connect moveit with ros2_contol
+moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
+
+# define the controller used in ros2_control 
+moveit_simple_controller_manager:
+  controller_names:
+    - follower/arm_controller
+    - follower/gripper_controller
+
+  follower/arm_controller:
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - "Rotation"
+      - "Pitch"
+      - "Elbow"
+      - "Wrist_Pitch"
+      - "Wrist_Roll"
+
+
+  follower/gripper_controller:
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - "Jaw"
+  

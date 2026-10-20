@@ -1,0 +1,24 @@
+services:
+  so101:
+    container_name: package_b
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: package-b-ros2:jazzy
+    environment:
+      DISPLAY: ${DISPLAY:-}
+    devices:
+      - /dev/ttyACM0:/dev/ttyACM0
+    init: true
+    network_mode: host
+    stdin_open: true
+    tty: true
+    working_dir: /root/ros2_ws
+    volumes:
+      - type: bind
+        source: .
+        target: /root/ros2_ws/src
+      - type: bind
+        source: /tmp/.X11-unix
+        target: /tmp/.X11-unix
+    command: bash

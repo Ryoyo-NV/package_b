@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!--
+  Modified in package_b:
+  - Renamed ros2_control joints from numeric names to descriptive names.
+-->
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <ros2_control name="RobotSystem" type="system">
+        <!-- ros2_control Gazebo -->
+        <hardware>
+            <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+        </hardware>
+
+        <joint name="Rotation">
+            <command_interface name="position">
+                <param name="min">-1.91986</param>
+                <param name="max">1.91986</param>
+            </command_interface>
+            <state_interface name="position" />
+        </joint>
+
+        <joint name="Pitch">
+            <command_interface name="position">
+                <param name="min">-1.74533</param>
+                <param name="max">1.74533</param>
+            </command_interface>
+            <state_interface name="position" />
+        </joint>
+
+        <joint name="Elbow">
+            <command_interface name="position">
+                <param name="min">-1.74533</param>
+                <param name="max">1.5708</param>
+            </command_interface>
+            <state_interface name="position" />
+        </joint>
+
+        <joint name="Wrist_Pitch">
+            <command_interface name="position">
+                <param name="min">-1.65806</param>
+                <param name="max">1.65806</param>
+            </command_interface>
+            <state_interface name="position" />
+        </joint>
+        <joint name="Wrist_Roll">
+            <command_interface name="position">
+                <param name="min">-2.79253</param>
+                <param name="max">2.79253</param>
+            </command_interface>
+            <state_interface name="position" />
+        </joint>
+
+        <joint name="Jaw">
+            <command_interface name="position">
+                <param name="min">-0.174533</param>
+                <param name="max">1.74533</param>
+            </command_interface>
+            <state_interface name="position" />
+        </joint>
+    </ros2_control>
+
+</robot>
